@@ -1,7 +1,9 @@
+
 from django.db import models
 
-# Create your models here.
+
 class Student(models.Model):
+
     name = models.CharField(max_length=100)
     email = models.EmailField()
     age = models.IntegerField()
@@ -10,6 +12,7 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
+
     # Model - Database structure
     # Views - Application logic
     # Template - HTML User Interface
@@ -17,4 +20,4 @@ class Student(models.Model):
     #retrive the students by name
     #count total students
     #update the students's age
-    #ctrl+/
+    

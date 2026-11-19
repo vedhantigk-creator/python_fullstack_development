@@ -13,4 +13,8 @@ class Student(models.Model):
     # Model - Database structure
     # Views - Application logic
     # Template - HTML User Interface
-    # URL - Connects browser requests to views
+    # URL - Connects browser requests to views#these are the orm operations
+    #retrive the students by name
+    #count total students
+    #update the students's age
+    #ctrl+/

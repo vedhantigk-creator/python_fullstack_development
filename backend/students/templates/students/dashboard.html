@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Dashboard</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #F8F5EC;
+    color: #25483D;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, #075C43, #087F5B);
+    padding: 30px 20px;
+    color: #F8F5EC;
+    animation: slideRight 0.7s ease;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.brand {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 45px;
+    text-align: center;
+    color: #F8F5EC;
+}
+
+.brand span {
+    color: #F07862;
+}
+
+.sidebar a {
+    display: block;
+    color: #E9F2E9;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 9px;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: rgba(248,245,236,0.18);
+    color: #FFFFFF;
+    transform: translateX(5px);
+    border-left: 4px solid #E6533C;
+}
+
+/* Main area */
+
+.main {
+    margin-left: 250px;
+    padding: 30px;
+}
+
+/* Topbar */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.topbar h2 {
+    color: #075C43;
+}
+
+.user {
+    background: #FFFFFF;
+    padding: 10px 18px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(8,127,91,0.08);
+    color: #087F5B;
+    font-weight: 600;
+    border: 1px solid #E8E1D2;
+}
+
+/* Welcome banner */
+
+.welcome {
+    padding: 35px;
+    border-radius: 18px;
+    color: #F8F5EC;
+    background: linear-gradient(120deg, #075C43, #087F5B);
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease;
+    box-shadow: 0 10px 30px rgba(8,127,91,0.16);
+    border-left: 5px solid #E6533C;
+}
+
+.welcome h1 {
+    margin-bottom: 12px;
+    font-size: 28px;
+}
+
+.welcome p {
+    color: #E4EFE8;
+}
+
+/* Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(8,127,91,0.06);
+    transition: 0.35s ease;
+    animation: fadeIn 1s ease;
+    border-bottom: 4px solid #087F5B;
+}
+
+.card:nth-child(even) {
+    border-bottom-color: #E6533C;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(8,127,91,0.13);
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    color: #829187;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.card h1 {
+    font-size: 28px;
+    color: #087F5B;
+}
+
+/* Profile */
+
+.profile {
+    background: #FFFFFF;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(8,127,91,0.06);
+    animation: fadeIn 1.2s ease;
+    border-left: 5px solid #E6533C;
+}
+
+.profile h2 {
+    color: #087F5B;
+    margin-bottom: 25px;
+}
+
+.profile p {
+    margin-bottom: 18px;
+    color: #758278;
+}
+
+.profile strong {
+    color: #25483D;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    color: #929B8F;
+    font-size: 13px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile */
+
+@media(max-width: 768px) {
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+    }
+
+    .brand {
+        margin-bottom: 15px;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin: 3px;
+        padding: 10px;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .topbar {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .welcome h1 {
+        font-size: 23px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <div class="brand">
+        🎓 Student<span>Hub</span>
+    </div>
+
+    <a href="#" class="active">🏠 Dashboard</a>
+    <a href="#profile">👤 My Profile</a>
+    <a href="#courses">📚 My Courses</a>
+    <a href="#attendance">📊 Attendance</a>
+    <a href="#performance">🏆 Performance</a>
+
+    <a href="{% url 'logout' %}">🚪 Logout</a>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <h2>Dashboard Overview</h2>
+
+        <div class="user">
+            👤 {{ request.user.username }}
+        </div>
+
+    </div>
+
+    <!-- Welcome -->
+
+    <div class="welcome">
+
+        <h1>
+            Welcome Back, {{ request.user.username }}! 👋
+        </h1>
+
+        <p>
+            Great to see you again.
+            Here's an overview of your student portal.
+        </p>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>Student Status</h3>
+            <h1>Active</h1>
+        </div>
+
+        <div class="card" id="courses">
+            <div class="card-icon">📚</div>
+            <h3>Total Courses</h3>
+            <h1>05</h1>
+        </div>
+
+        <div class="card" id="attendance">
+            <div class="card-icon">📊</div>
+            <h3>Attendance</h3>
+            <h1>90%</h1>
+        </div>
+
+        <div class="card" id="performance">
+            <div class="card-icon">🏆</div>
+            <h3>Performance</h3>
+            <h1>Excellent</h1>
+        </div>
+
+    </div>
+
+    <!-- Profile -->
+
+    <div class="profile" id="profile">
+
+        <h2>👤 My Profile</h2>
+
+        <p>
+            <strong>Username:</strong>
+            {{ request.user.username }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            {{ request.user.email }}
+        </p>
+
+        <p>
+            <strong>Account Status:</strong>
+            Active
+        </p>
+
+    </div>
+
+    <footer>
+        © 2026 StudentHub | All Rights Reserved
+    </footer>
+
+</div>
+
+</body>
+</html>

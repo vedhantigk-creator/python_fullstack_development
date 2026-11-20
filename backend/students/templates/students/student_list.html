@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration students</title>
+    <title>Document</title>
 </head>
 <body>
-    <h2>Registered students</h2>
+    <h2>Registered Students</h2>
 
 <table border="1">
 
@@ -17,13 +17,13 @@
         <th>Department</th>
     </tr>
 
-    {% for students in students %}
+    {% for student in students %}
 
     <tr>
-        <td>{{ students.name }}</td>
-        <td>{{ students.email }}</td>
-        <td>{{ students.age }}</td>
-        <td>{{ students.department }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.department }}</td>
     </tr>
 
     {% empty %}
@@ -31,7 +31,7 @@
     <tr>
         <td colspan="4">No students found</td>
     </tr>
-
+                          
     {% endfor %}
 </body>
 </html>

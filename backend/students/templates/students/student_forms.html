@@ -1,20 +1,107 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Registration</title>
+    <title>User Registration</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #26292c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h2>Student Registration Form</h2>
+<div class="container">
+
+    <h2>Create Account</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if success %}
+        <p class="success">{{ success }}</p>
+    {% endif %}
 
     <form method="POST">
+
         {% csrf_token %}
 
-        {{ form.as_p }}
+        <label>Username</label>
+        <input type="text"
+               name="username"
+               placeholder="Enter username"
+               required>
 
-        <button type="submit">Submit</button>
+        <label>Email</label>
+        <input type="email"
+               name="email"
+               placeholder="Enter email"
+               required>
+
+        <label>Password</label>
+        <input type="password"
+               name="password"
+               placeholder="Enter password"
+               required>
+
+        <label>Confirm Password</label>
+        <input type="password"
+               name="confirm_password"
+               placeholder="Confirm password"
+               required>
+
+        <button type="submit">Register</button>
+
     </form>
+
+</div>
 
 </body>
 </html>

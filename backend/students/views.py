@@ -2,14 +2,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
 from .forms import StudentForm
 from .models import Student
-
+from .models import Product
 
 # Student Registration
 @login_required(login_url='login')
-def student_form(request):
+def register(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
 
@@ -21,7 +20,7 @@ def student_form(request):
 
     return render(
         request,
-        'students/student_form.html',
+        'students/register.html',
         {'form': form}
     )
 
@@ -90,4 +89,15 @@ def logout_page(request):
     if request.method == 'POST':
         logout(request)
 
+
     return redirect('login')
+
+def home(request):
+    return render(request,'students/home.html')
+def products(request):
+    all_products=Product.objects.all()
+    return render(request,'students/products.html',
+{
+  'products':all_products  
+})
+    
